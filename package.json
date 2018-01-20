@@ -1,0 +1,47 @@
+{
+  "name": "html-webpack-disable-plugin",
+  "version": "1.0.1",
+  "description": "Disables html-webpack-plugin from emiting a file.",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "eslint \"src/**/*.js\" --ignore-pattern \"src/**/*.test.js\"",
+    "test": "cross-env NODE_ENV=test nyc -x src/**/*.test.js mocha src/**/*.test.js --require babel-core/register",
+    "prebuild": "npm run clear && npm test && npm run lint",
+    "build": "cross-env NODE_ENV=production babel src/ -d dist --ignore test.js",
+    "clear": "rimraf dist",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:flasd/html-webpack-disable-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "library",
+    "boilerplate"
+  ],
+  "author": "Marcel de Oliveira Coelho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flasd/html-webpack-disable-plugin/issues"
+  },
+  "homepage": "https://github.com/flasd/html-webpack-disable-plugin#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
+    "cross-env": "^5.1.1",
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "html-webpack-plugin": "^2.30.1",
+    "memory-fs": "^0.4.1",
+    "mocha": "^4.0.1",
+    "nyc": "^11.3.0",
+    "rimraf": "^2.6.2",
+    "webpack": "^3.10.0"
+  }
+}
